@@ -1,48 +1,32 @@
 import { DataSource, DataSourceOptions } from "typeorm";
-import path from "path";
 import "dotenv/config";
 import "reflect-metadata";
+import { User } from "./entities/user.entitie";
+import { Addresses } from "./entities/addresses.entitie";
+import { Ads } from "./entities/ads.entitie";
+import { Images } from "./entities/images.entities";
+import {initial1676380903372} from "./migrations/1676380903372-initial"
 
-const setDataSourceConfig = (): DataSourceOptions => {
-  const entitiesPath: string = path.join(__dirname, "./entities/**.{js,ts}");
-  const migrationsPath: string = path.join(
-    __dirname,
-    "./migrations/**.{js,ts}"
-  );
+const AppDataSource = new DataSource(
+  process.env.NODE_ENV === "test"
+    ? {
+        type: "sqlite",
+        database: ":memory:",
+        synchronize: true,
+        entities: ["src/entities/*.ts"],
+      }
+    : {
+        type: "postgres",
+        host: process.env.HOST,
+        port: 5432,
+        username: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASSWORD,
+        database: process.env.POSTGRES_DB,
+        logging: true,
+        synchronize: false,
+        entities: [User, Ads, Addresses, Images],
+        migrations: [initial1676380903372],
+      }
+);
 
-  const nodeEnv = process.env.NODE_ENV;
-
-  if (nodeEnv === "production") {
-    return {
-      type: "postgres",
-      url: process.env.DATABASE_URL,
-      entities: [entitiesPath],
-      migrations: [migrationsPath],
-    };
-  }
-
-  if (nodeEnv === "test") {
-    return {
-      type: "sqlite",
-      database: ":memory:",
-      synchronize: true,
-      entities: [entitiesPath],
-    };
-  }
-
-  return {
-    type: "postgres",
-    host: process.env.HOST,
-    username: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    port: 5432,
-    database: process.env.POSTGRES_DB,
-    synchronize: false,
-    logging: true,
-    entities: [entitiesPath],
-    migrations: [migrationsPath],
-  };
-};
-
-const dataSourceConfig = setDataSourceConfig();
-export default new DataSource(dataSourceConfig);
+export default AppDataSource;
