@@ -21,7 +21,7 @@ import {
     description: string;
 
     @Column({ length: 10, nullable:false })
-    typeVehicle: string;
+    typeVehicle: "motorbike" | "car";
 
     @Column({ length: 50, nullable:false })
     releaseYear: string;
