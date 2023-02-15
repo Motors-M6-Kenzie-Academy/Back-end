@@ -14,7 +14,7 @@ export interface IUser {
   complement: string;
   zipCode: string;
   state: string;
-  address: object;
+  address?: object;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -34,3 +34,14 @@ export type IUserCreateResponse = Omit<
   | "zipCode"
   | "state"
 >;
+
+// SignIn User
+
+export type IUserSignInRequest = {
+  email: string;
+  password: string;
+};
+
+export type IUserSignInResponse = {
+  token: string;
+};

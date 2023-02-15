@@ -2,6 +2,7 @@ import AppDataSource from "../../data-source";
 import { Addresses } from "../../entities/addresses.entitie";
 import { User } from "../../entities/user.entitie";
 import { IUserCreateRequest, IUserCreateResponse } from "../../interfaces/user";
+import { hash } from "bcrypt";
 
 export const createUserService = async ({
   accountType,
@@ -25,7 +26,7 @@ export const createUserService = async ({
   const newUser = new User();
   newUser.name = name;
   newUser.email = email;
-  newUser.password = password;
+  newUser.password = await hash(password, 10);
   newUser.phoneNumber = phoneNumber;
   newUser.birthDate = birthDate;
   newUser.accountType = accountType;

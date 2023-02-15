@@ -40,5 +40,4 @@ export const createUserController = async (req: Request, res: Response) => {
       return res.status(400).json({ Error: error.message });
     }
   }
-  return "";
 };
