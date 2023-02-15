@@ -1,36 +1,48 @@
-import { Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn,
-    CreateDateColumn
- } from "typeorm";
- import { uuid } from "uuidv4"; 
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  JoinColumn,
+} from "typeorm";
+import { User } from "./user.entitie";
 
 @Entity("addresses")
-  class Addresses {
-    @PrimaryGeneratedColumn("uuid")
-    readonly id: string;
-  
-    @Column({ length: 120, nullable:false })
-    roadName: string;
+class Addresses {
+  @PrimaryGeneratedColumn("uuid")
+  readonly id: string;
 
-    @Column({ length: 10, nullable:false })
-    houseNumber: string;
+  @Column()
+  roadName: string;
 
-    @Column({ length: 50, nullable:true })
-    complement: string;
-  
-    @Column({ length: 50, nullable:false })
-    zipCode: string;
-    
-    @Column({ length: 50 })
-    state: string;
+  @Column()
+  houseNumber: number;
 
-    @CreateDateColumn()
-    createdAt: Date;
-  
-    @UpdateDateColumn()
-    updatedAt: Date;
-  }
+  @Column()
+  complement: string;
+
+  @Column()
+  zipCode: string;
+
+  @Column()
+  state: string;
+
+  @Column({
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP(6)",
+  })
+  createdAt: Date;
+
+  @Column({
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP(6)",
+    onUpdate: "CURRENT_TIMESTAMP(6)",
+  })
+  updatedAt: Date;
+
+  @OneToOne(() => User)
+  @JoinColumn()
+  userAddress: User;
+}
 
 export { Addresses };

@@ -1,64 +1,66 @@
 import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn,
-    OneToOne,
-    OneToMany,
-    JoinColumn
-  } from "typeorm";
-  import { uuid } from "uuidv4";
-  import { Exclude } from "class-transformer";
-  import { Ads } from "./ads.entitie";
-  import { Addresses } from "./addresses.entitie";
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToOne,
+  OneToMany,
+  JoinColumn,
+} from "typeorm";
+import { Ads } from "./ads.entitie";
+import { Addresses } from "./addresses.entitie";
 
+@Entity("users")
+class User {
+  @PrimaryGeneratedColumn("uuid")
+  readonly id: string;
 
-  @Entity("users")
-  class User {
-    @PrimaryGeneratedColumn("uuid")
-    readonly id: string;
-  
-    @Column({ length: 50 })
-    name: string;
-  
-    @Column({ length: 50, unique: true })
-    email: string;
-  
-    @Column({ length: 120 })
-    @Exclude()
-    password: string;
+  @Column()
+  name: string;
 
-    @Column({ length: 13, unique: true })
-    phoneNumber: string;
+  @Column({ unique: true })
+  email: string;
 
-    @Column({ length: 8 })
-    birthDate: string;
+  @Column({ unique: true })
+  cpf: string;
 
-    @Column({ length: 120 })
-    description: string;
+  @Column()
+  password: string;
 
-    @Column({ length: 8 })
-    accountType: string;
-  
-    @Column({ default: false })
-    readonly isAdm: boolean;
-  
-    @Column({ default: true })
-    readonly isActive: boolean;
-  
-    @CreateDateColumn()
-    createdAt: Date;
-  
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @Column()
+  phoneNumber: string;
 
-    @OneToOne(() => Addresses, { nullable: true })
-    @JoinColumn()
-    address: Addresses;
-    
-    @OneToMany(() => Ads, (ads) => ads.user)
-    ads: Ads[];
-  }
-  
-  export { User };
+  @Column()
+  birthDate: string;
+
+  @Column()
+  description: string;
+
+  @Column()
+  accountType: string;
+
+  @Column({ default: true })
+  isActive: boolean;
+
+  @CreateDateColumn({
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP(6)",
+  })
+  createdAt: Date;
+
+  @UpdateDateColumn({
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP(6)",
+  })
+  updatedAt: Date;
+
+  @OneToOne(() => Addresses, { nullable: true })
+  @JoinColumn()
+  address: Addresses;
+
+  @OneToMany(() => Ads, (ads) => ads.user.id)
+  ads: Ads[];
+}
+
+export { User };

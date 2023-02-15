@@ -1,54 +1,60 @@
 import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn,
-    CreateDateColumn,
-    OneToMany,
-    ManyToOne
-  } from "typeorm";
-  import { uuid } from "uuidv4";
-  import { User } from "./user.entitie";
-  import { Images } from "./images.entities";
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  CreateDateColumn,
+  OneToMany,
+  ManyToOne,
+} from "typeorm";
 
+import { User } from "./user.entitie";
+import { Images } from "./images.entities";
 
-  @Entity("ads")
-  class Ads {
-    @PrimaryGeneratedColumn("uuid")
-    readonly id: string;
-  
-    @Column({ length: 120, nullable:false })
-    description: string;
+@Entity("ads")
+class Ads {
+  @PrimaryGeneratedColumn("uuid")
+  readonly id: string;
 
-    @Column({ length: 10, nullable:false })
-    typeVehicle: "motorbike" | "car";
+  @Column()
+  description: string;
 
-    @Column({ length: 50, nullable:false })
-    releaseYear: string;
-  
-    @Column({ length: 50 })
-    mileage: string;
+  @Column()
+  typeVehicle: string;
 
-    @Column({ length: 50, nullable:false })
-    price: string;
+  @Column()
+  releaseYear: number;
 
-    @Column({ length: 124 })
-    cover: string;
+  @Column()
+  mileage: number;
 
-    @Column({ length: 124 })
-    images: string;
-    
-    @CreateDateColumn()
-    createdAt: Date;
-  
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @Column()
+  price: number;
 
-    @OneToMany(() => Images, (images) => images.ads)
-    imagesList: Images[];
-    
-    @ManyToOne(() => User, { eager: true })
-    user: User;
-  }
-  
-  export { Ads };
+  @Column()
+  cover: string;
+
+  @Column()
+  images: string;
+
+  @Column({
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP(6)",
+  })
+  createdAt: Date;
+
+  @Column({
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP(6)",
+    onUpdate: "CURRENT_TIMESTAMP(6)",
+  })
+  updatedAt: Date;
+
+  @OneToMany(() => Images, (images) => images.ads)
+  imagesList: Images[];
+
+  @ManyToOne(() => User, { eager: true })
+  user: User;
+}
+
+export { Ads };
