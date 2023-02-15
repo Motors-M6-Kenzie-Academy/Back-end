@@ -22,6 +22,9 @@ class Ads {
   @Column({ length: 10, nullable: false })
   typeVehicle: "motorbike" | "car";
 
+  @Column({ default: "sell" })
+  typeAds: "sell" | "bid";
+
   @Column({ length: 50, nullable: false })
   releaseYear: string;
 
@@ -40,7 +43,7 @@ class Ads {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany(() => Images, (images) => images.ads)
+  @OneToMany(() => Images, (images) => images.ads, { eager: true })
   images: Images[];
 
   @ManyToOne(() => User, { eager: true })
