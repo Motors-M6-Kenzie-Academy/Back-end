@@ -1,9 +1,10 @@
-// import { Request, Response } from "express";
-// import listAdsService from "../../services/Ads/listAds.services";
+import { Request, Response } from "express";
+import adsGetService from "../../services/Ads/listAds.service";
 
-// const adsListController = async (req: Request, res: Response) => {
-//     const ads = await listAdsService()
-//     return res.json(ads)
-// }
+const adsGetController = async (req: Request, res: Response) => {
+  const ads = await adsGetService();
 
-// export default adsListController
+  return res.status(200).json(ads);
+};
+
+export default adsGetController;
