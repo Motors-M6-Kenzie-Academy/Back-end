@@ -33,7 +33,10 @@ import {
     price: string;
 
     @Column({ length: 124 })
-    image: string;
+    cover: string;
+
+    @Column({ length: 124 })
+    images: string;
     
     @CreateDateColumn()
     createdAt: Date;
@@ -42,7 +45,7 @@ import {
     updatedAt: Date;
 
     @OneToMany(() => Images, (images) => images.ads)
-    images: Images[];
+    imagesList: Images[];
     
     @ManyToOne(() => User, { eager: true })
     user: User;
