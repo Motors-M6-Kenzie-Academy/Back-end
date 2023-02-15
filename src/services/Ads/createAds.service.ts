@@ -33,6 +33,7 @@ const adsCreateService = async ({
 
   // newAds.user = seller!;
   await adsRepository.save(newAds);
+
   return newAds;
 };
 
