@@ -46,6 +46,8 @@ export const createUserService = async ({
 
   const createNewUserAdress = await AddressRepository.save(newUserAddress);
 
+  
+
   const { password: passwordRemove, ...user } = createNewUser;
   const { userAddress, ...address } = createNewUserAdress;
 

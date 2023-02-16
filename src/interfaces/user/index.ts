@@ -17,15 +17,17 @@ export interface IUser {
   address?: object;
   createdAt?: Date;
   updatedAt?: Date;
+  token?: string;
 }
 
 // Create User
 export type IUserCreateRequest = Omit<
   IUser,
-  "id" | "createdAt" | "updatedAt" | "ads"
+  "id" | "createdAt" | "updatedAt" | "ads" | "token"
 >;
 export type IUserCreateResponse = Omit<
   IUser,
+  | "token"
   | "ads"
   | "password"
   | "roadName"
@@ -33,6 +35,22 @@ export type IUserCreateResponse = Omit<
   | "complement"
   | "zipCode"
   | "state"
+>;
+
+// Update User
+export type IUserUpdateRequest = Omit<
+  IUser,
+  | "id"
+  | "password"
+  | "accountType"
+  | "roadName"
+  | "houseNumber"
+  | "complement"
+  | "zipCode"
+  | "state"
+  | "address"
+  | "createdAt"
+  | "updatedAt"
 >;
 
 // SignIn User
