@@ -27,6 +27,9 @@ class Addresses {
   @Column()
   state: string;
 
+  @Column()
+  city: string;
+
   @Column({
     type: "timestamp",
     default: () => "CURRENT_TIMESTAMP(6)",
