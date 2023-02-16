@@ -14,6 +14,7 @@ export const createUserService = async ({
   phoneNumber,
   description,
   houseNumber,
+  city,
   complement,
   roadName,
   state,
@@ -42,11 +43,10 @@ export const createUserService = async ({
   newUserAddress.complement = complement;
   newUserAddress.zipCode = zipCode;
   newUserAddress.state = state;
+  newUserAddress.city = city;
   newUserAddress.userAddress = createNewUser;
 
   const createNewUserAdress = await AddressRepository.save(newUserAddress);
-
-  
 
   const { password: passwordRemove, ...user } = createNewUser;
   const { userAddress, ...address } = createNewUserAdress;

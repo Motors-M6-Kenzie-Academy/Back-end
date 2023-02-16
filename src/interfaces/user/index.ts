@@ -12,6 +12,7 @@ export interface IUser {
   roadName: string;
   houseNumber: number;
   complement: string;
+  city: string;
   zipCode: string;
   state: string;
   address?: object;
@@ -35,6 +36,7 @@ export type IUserCreateResponse = Omit<
   | "complement"
   | "zipCode"
   | "state"
+  | "city"
 >;
 
 // Update User
@@ -51,6 +53,24 @@ export type IUserUpdateRequest = Omit<
   | "address"
   | "createdAt"
   | "updatedAt"
+  | "city"
+>;
+
+// Update User Address
+export type IAddressUpdateRequest = Omit<
+  IUser,
+  | "id"
+  | "password"
+  | "accountType"
+  | "createdAt"
+  | "updatedAt"
+  | "name"
+  | "email"
+  | "cpf"
+  | "phoneNumber"
+  | "birthDate"
+  | "description"
+  | "address"
 >;
 
 // SignIn User

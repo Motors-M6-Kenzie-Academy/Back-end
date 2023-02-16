@@ -15,6 +15,7 @@ export const createUserController = async (req: Request, res: Response) => {
       houseNumber,
       complement,
       roadName,
+      city,
       state,
       zipCode,
     } = req.body;
@@ -29,6 +30,7 @@ export const createUserController = async (req: Request, res: Response) => {
       description,
       houseNumber,
       complement,
+      city,
       roadName,
       state,
       zipCode,
