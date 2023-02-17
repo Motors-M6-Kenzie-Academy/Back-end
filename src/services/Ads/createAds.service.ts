@@ -6,7 +6,7 @@ import { IAdsRequest } from "../../interfaces/ads";
 
 const adsCreateService = async ({
   description,
-  image,
+  cover,
   images,
   mileage,
   price,
@@ -23,7 +23,7 @@ const adsCreateService = async ({
 
   const newAds = {
     description,
-    image,
+    cover,
     images: newImages,
     mileage,
     price,

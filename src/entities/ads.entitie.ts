@@ -37,9 +37,6 @@ class Ads {
   @Column({ length: 124 })
   cover: string;
 
-  @Column({ length: 124 })
-  image: string;
-
   @CreateDateColumn()
   createdAt: Date;
 
