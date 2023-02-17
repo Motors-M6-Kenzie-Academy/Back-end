@@ -8,7 +8,6 @@ import {
   ManyToOne,
 } from "typeorm";
 import { User } from "./user.entitie";
-import { Images } from "./images.entities";
 
 @Entity("ads")
 class Ads {
@@ -37,16 +36,13 @@ class Ads {
   cover: string;
 
   @Column({ length: 124 })
-  image: string;
+  gallery_image: string;
 
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
-
-  @OneToMany(() => Images, (images) => images.ads, { eager: true })
-  images: Images[];
 
   @ManyToOne(() => User, { eager: true })
   user: User;
