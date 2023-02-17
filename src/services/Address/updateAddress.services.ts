@@ -10,16 +10,16 @@ export const updateAddressService = async ({
   roadName,
   state,
   zipCode,
-  token,
+  userId,
 }: IAddressUpdateRequest): Promise<Addresses | null> => {
-  const tokenBears = token?.split(" ")[1];
+  // const tokenBears = token?.split(" ")[1];
 
-  const { userRepository }: any = decode(tokenBears as string);
+  // const { userRepository }: any = decode(tokenBears as string);
 
   const findAddress = await AppDataSource.getRepository(Addresses).findOne({
     where: {
       userAddress: {
-        id: userRepository["id"],
+        id: userId,
       },
     },
   });
@@ -35,14 +35,14 @@ export const updateAddressService = async ({
   findAddress.updatedAt = new Date();
 
   const addressUpdated = await AppDataSource.getRepository(Addresses).update(
-    { userAddress: { id: userRepository["id"] } },
+    { userAddress: { id: userId } },
     { ...findAddress }
   );
 
   const address = await AppDataSource.getRepository(Addresses).findOne({
     where: {
       userAddress: {
-        id: userRepository["id"],
+        id: userId,
       },
     },
   });

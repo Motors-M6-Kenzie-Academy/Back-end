@@ -5,7 +5,8 @@ export const updateAddressController = async (req: Request, res: Response) => {
   try {
     const { houseNumber, complement, roadName, state, zipCode, city } =
       req.body;
-    const token = req.headers.authorization;
+    const userId = req.user.id;
+    console.log(userId)
     const dataResponse = await updateAddressService({
       houseNumber,
       complement,
@@ -13,10 +14,10 @@ export const updateAddressController = async (req: Request, res: Response) => {
       state,
       zipCode,
       city,
-      token,
+      userId,
     });
 
-    return res.status(200).json(dataResponse);
+    return res.status(200).json('dataResponse');
   } catch (error) {
     if (error instanceof Error) {
       return res.status(400).json({ Error: error.message });

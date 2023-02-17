@@ -1,5 +1,4 @@
-import { IimagesRequest } from "../images";
-import { IUserRequest } from "../users";
+import { IimagesRequest } from "../images"
 
 export interface IAdsRequest {
   description: string;

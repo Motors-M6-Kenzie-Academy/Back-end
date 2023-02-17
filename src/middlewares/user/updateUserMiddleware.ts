@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { decode } from "jsonwebtoken";
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/user.entitie";
+import { AppError } from "../../errors/appError";
 import { validateBirthdate } from "../../utils/validateBirthdate.utils";
 import { validateCPF } from "../../utils/validateCPF.utils";
 import { validatePhoneNumber } from "../../utils/validatePhoneNumber.utils";
@@ -12,23 +13,16 @@ export const updateUserMiddleware = async (
   next: NextFunction
 ) => {
   const { birthDate, cpf, phoneNumber } = req.body;
-  const token = req.headers.authorization;
+  
+  const userId = req.params.id
 
-  // Verificação de Token
-  const tokenBears = token?.split(" ")[1];
-  if (!token) {
-    return res.status(400).json({ message: "User token empty" });
+  const users = await AppDataSource.getRepository(User).find();
+  const user = users.find(el => el.id === userId)
+
+  if(!user){
+    throw new AppError ("User not found", 404)
   }
 
-  // Verificação de User
-  const { userRepository }: any = decode(tokenBears as string);
-  const findUser = await AppDataSource.getRepository(User).find({
-    where: { id: userRepository["id"] },
-  });
-
-  if (!findUser) {
-    return res.status(400).json({ message: "User not found" });
-  }
 
   // Verificação por RegEx
   const isBirthdateValid = validateBirthdate(birthDate);
@@ -36,22 +30,15 @@ export const updateUserMiddleware = async (
   const isPhoneNumberValid = validatePhoneNumber(phoneNumber);
 
   if (!isBirthdateValid) {
-    return res.status(400).json({
-      message: "Wrong format for bithdate, need be igual to DD/MM/YYYY",
-    });
+    throw new AppError ("Wrong format for bithdate, need be igual to DD/MM/YYYY", 400)
   }
 
   if (!isCPFValid) {
-    return res.status(400).json({
-      message: "Wrong format for CPF, need be igual to XXX.XXX.XXX-XX",
-    });
+    throw new AppError ("Wrong format for CPF, need be igual to XXX.XXX.XXX-XX", 400)
   }
 
   if (!isPhoneNumberValid) {
-    return res.status(400).json({
-      message:
-        "Wrong format for phoneNumber, need be igual to +55(99)99999-9999 or +55(99)9999-9999",
-    });
+    throw new AppError ("Wrong format for phoneNumber, need be igual to +55(99)99999-9999 or +55(99)9999-9999", 400)
   }
 
   next();

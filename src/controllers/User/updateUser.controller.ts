@@ -2,11 +2,12 @@ import { Request, Response } from "express";
 import { updateUserService } from "../../services/User/updateUser.services";
 
 export const updateUserController = async (req: Request, res: Response) => {
+
   try {
     const { birthDate, cpf, description, email, name, phoneNumber } = req.body;
-    const token = req.headers.authorization;
+    const userId = req.params.id
     const dataResponse = await updateUserService({
-      token,
+      userId,
       birthDate,
       cpf,
       description,

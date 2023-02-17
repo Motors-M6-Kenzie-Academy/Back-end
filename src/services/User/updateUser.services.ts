@@ -4,7 +4,7 @@ import { User } from "../../entities/user.entitie";
 import { IUserUpdateRequest } from "../../interfaces/users";
 
 export const updateUserService = async ({
-  token,
+  userId,
   birthDate,
   cpf,
   description,
@@ -12,13 +12,14 @@ export const updateUserService = async ({
   name,
   phoneNumber,
 }: IUserUpdateRequest) => {
-  // Validação de Token
-  const tokenBears = token?.split(" ")[1];
 
-  // Verificação de User
-  const { userRepository }: any = decode(tokenBears as string);
+  // // Validação de Token
+  // const tokenBears = token?.split(" ")[1];
+
+  // // Verificação de User
+  // const { userRepository }: any = decode(tokenBears as string);
   const findUser = await AppDataSource.getRepository(User).findOne({
-    where: { id: userRepository["id"] },
+    where: { id: userId },
   });
 
   if (!findUser) return;
@@ -33,13 +34,13 @@ export const updateUserService = async ({
   findUser.updatedAt = new Date();
 
   const userUpdated = await AppDataSource.getRepository(User).update(
-    { id: userRepository["id"] },
+    { id: userId },
     { ...findUser }
   );
 
   // Retorno de objeto com dados atualizados
   const user = await AppDataSource.getRepository(User).findOne({
-    where: { id: userRepository["id"] },
+    where: { id: userId },
   });
 
   if (!user) return;

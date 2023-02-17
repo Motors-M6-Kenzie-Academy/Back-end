@@ -19,7 +19,7 @@ export const SignInUserMiddleware = async (
   }
 
   if (!compareSync(password, userRepository.password)) {
-    return res.status(400).json({ message: "Wrong email or password rr" });
+    return res.status(400).json({ message: "Wrong email or password" });
   }
 
   next();

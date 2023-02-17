@@ -18,7 +18,7 @@ export interface IUser {
   address?: object;
   createdAt?: Date;
   updatedAt?: Date;
-  token?: string;
+  userId?: string;
 }
 
 
@@ -26,11 +26,11 @@ export interface IUser {
 // Create User
 export type IUserCreateRequest = Omit<
   IUser,
-  "id" | "createdAt" | "updatedAt" | "ads" | "token"
+  "id" | "createdAt" | "updatedAt" | "ads" | "userId"
 >;
 export type IUserCreateResponse = Omit<
   IUser,
-  | "token"
+  | "userId"
   | "ads"
   | "password"
   | "roadName"
