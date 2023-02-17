@@ -1,13 +1,12 @@
 import AppDataSource from "../../data-source";
 import { Ads } from "../../entities/ads.entitie";
-import { Images } from "../../entities/images.entities";
 import { User } from "../../entities/user.entitie";
 import { IAdsRequest } from "../../interfaces/ads";
 
 const adsCreateService = async ({
   description,
-  image,
-  images,
+  cover,
+  gallery_image,
   mileage,
   price,
   releaseYear,
@@ -15,16 +14,13 @@ const adsCreateService = async ({
 }: IAdsRequest) => {
   const adsRepository = AppDataSource.getRepository(Ads);
   const userRepository = AppDataSource.getRepository(User);
-  const imageRepository = AppDataSource.getRepository(Images);
 
   // const seller = await userRepository.findOneBy({ id: userId });
 
-  const newImages = await imageRepository.save(images);
-
   const newAds = {
     description,
-    image,
-    images: newImages,
+    cover,
+    gallery_image,
     mileage,
     price,
     releaseYear,

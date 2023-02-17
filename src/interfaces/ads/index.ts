@@ -1,6 +1,3 @@
-import { IimagesRequest } from "../images";
-import { IUserRequest } from "../users";
-
 export interface IAdsRequest {
   description: string;
   typeVehicle: "motorbike" | "car";
@@ -8,8 +5,8 @@ export interface IAdsRequest {
   releaseYear: string;
   mileage: string;
   price: string;
-  image: string;
-  images: IimagesRequest[];
+  cover: string;
+  gallery_image: string;
 }
 
 export interface IAds extends IAdsRequest {

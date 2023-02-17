@@ -4,8 +4,7 @@ import { DataSource } from "typeorm";
 import { User } from "./entities/user.entitie";
 import { Addresses } from "./entities/addresses.entitie";
 import { Ads } from "./entities/ads.entitie";
-import { Images } from "./entities/images.entities";
-import { dev1676636910872 } from "./migrations/1676636910872-dev";
+import { RelationImageRemoved1676647598660 } from "./migrations/1676647598660-RelationImageRemoved";
 
 const AppDataSource = new DataSource(
   process.env.NODE_ENV === "test"
@@ -24,8 +23,8 @@ const AppDataSource = new DataSource(
         database: process.env.POSTGRES_DB,
         logging: true,
         synchronize: false,
-        entities: [User, Ads, Addresses, Images],
-        migrations: [dev1676636910872],
+        entities: [User, Ads, Addresses],
+        migrations: [RelationImageRemoved1676647598660],
       }
 );
 
