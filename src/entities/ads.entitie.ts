@@ -7,7 +7,6 @@ import {
   OneToMany,
   ManyToOne,
 } from "typeorm";
-
 import { User } from "./user.entitie";
 import { Images } from "./images.entities";
 
@@ -16,42 +15,38 @@ class Ads {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @Column()
+  @Column({ length: 120, nullable: false })
   description: string;
 
-  @Column()
-  typeVehicle: string;
+  @Column({ length: 10, nullable: false })
+  typeVehicle: "motorbike" | "car";
 
-  @Column()
-  releaseYear: number;
+  @Column({ default: "sell" })
+  typeAds: "sell" | "bid";
 
-  @Column()
-  mileage: number;
+  @Column({ length: 50, nullable: false })
+  releaseYear: string;
 
-  @Column()
-  price: number;
+  @Column({ length: 50 })
+  mileage: string;
 
-  @Column()
+  @Column({ length: 50, nullable: false })
+  price: string;
+
+  @Column({ length: 124 })
   cover: string;
 
-  @Column()
-  images: string;
+  @Column({ length: 124 })
+  image: string;
 
-  @Column({
-    type: "timestamp",
-    default: () => "CURRENT_TIMESTAMP(6)",
-  })
+  @CreateDateColumn()
   createdAt: Date;
 
-  @Column({
-    type: "timestamp",
-    default: () => "CURRENT_TIMESTAMP(6)",
-    onUpdate: "CURRENT_TIMESTAMP(6)",
-  })
+  @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany(() => Images, (images) => images.ads)
-  imagesList: Images[];
+  @OneToMany(() => Images, (images) => images.ads, { eager: true })
+  images: Images[];
 
   @ManyToOne(() => User, { eager: true })
   user: User;

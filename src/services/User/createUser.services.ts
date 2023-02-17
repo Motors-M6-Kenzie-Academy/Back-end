@@ -1,7 +1,10 @@
 import AppDataSource from "../../data-source";
 import { Addresses } from "../../entities/addresses.entitie";
 import { User } from "../../entities/user.entitie";
-import { IUserCreateRequest, IUserCreateResponse } from "../../interfaces/user";
+import {
+  IUserCreateRequest,
+  IUserCreateResponse,
+} from "../../interfaces/users";
 import { hash } from "bcrypt";
 
 export const createUserService = async ({

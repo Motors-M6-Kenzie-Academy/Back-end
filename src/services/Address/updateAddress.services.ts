@@ -1,7 +1,7 @@
 import { decode } from "jsonwebtoken";
 import AppDataSource from "../../data-source";
 import { Addresses } from "../../entities/addresses.entitie";
-import { IAddressUpdateRequest } from "../../interfaces/user";
+import { IAddressUpdateRequest } from "../../interfaces/users";
 
 export const updateAddressService = async ({
   city,

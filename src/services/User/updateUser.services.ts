@@ -1,9 +1,7 @@
-import { hash } from "bcrypt";
 import { decode } from "jsonwebtoken";
-import app from "../../app";
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/user.entitie";
-import { IUserUpdateRequest } from "../../interfaces/user";
+import { IUserUpdateRequest } from "../../interfaces/users";
 
 export const updateUserService = async ({
   token,

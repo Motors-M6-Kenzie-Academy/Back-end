@@ -6,10 +6,10 @@ class Images {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @Column()
+  @Column({ length: 250 })
   urlImage: string;
 
-  @ManyToOne(() => Ads, { eager: true })
+  @ManyToOne(() => Ads)
   ads: Ads;
 }
 

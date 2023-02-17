@@ -21,6 +21,8 @@ export interface IUser {
   token?: string;
 }
 
+
+// Corrigir 
 // Create User
 export type IUserCreateRequest = Omit<
   IUser,

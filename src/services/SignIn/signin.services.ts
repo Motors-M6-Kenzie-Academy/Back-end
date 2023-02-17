@@ -1,7 +1,10 @@
 import { sign } from "jsonwebtoken";
 import AppDataSource from "../../data-source";
 import { User } from "../../entities/user.entitie";
-import { IUserSignInRequest, IUserSignInResponse } from "../../interfaces/user";
+import {
+  IUserSignInRequest,
+  IUserSignInResponse,
+} from "../../interfaces/users";
 
 export const SignInService = async ({
   email,
