@@ -7,7 +7,6 @@ import {
   OneToMany,
   ManyToOne,
 } from "typeorm";
-import { uuid } from "uuidv4";
 import { User } from "./user.entitie";
 import { Images } from "./images.entities";
 

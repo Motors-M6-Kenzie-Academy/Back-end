@@ -5,10 +5,13 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migrate:generate": "yarn typeorm-ts-node-commonjs migration:generate src/migrations/dev -d src/data-source.ts",
+    "migrate:run": "yarn typeorm migration:run -d src/data-source.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
+    "@types/jsonwebtoken": "^9.0.1",
     "@types/node": "^18.13.0",
     "@types/uuid": "^9.0.0",
     "@types/uuidv4": "^5.0.0",

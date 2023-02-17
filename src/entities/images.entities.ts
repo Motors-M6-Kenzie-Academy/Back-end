@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { uuid } from "uuidv4";
 import { Ads } from "./ads.entitie";
 
 @Entity("images")
