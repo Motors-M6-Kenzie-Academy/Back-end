@@ -6,7 +6,7 @@ declare global {
     interface Request {
       user: {
         id: string;
-        isAdm: boolean;
+        accountType: string;
       };
       newAds: IAdsRequest;
     }
