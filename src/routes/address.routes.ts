@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { updateAddressController } from "../controllers/Address/updateAddress.controller";
-import { updateAddressMiddleware } from "../middlewares/address/updateAddressMiddleware.ts";
+import { updateAddressInputsMiddleware } from "../middlewares/address/updateAddressInputsMiddleware.ts";
 
 const routes = Router();
 
 export const addressRoutes = () => {
-  routes.patch("/", updateAddressMiddleware, updateAddressController);
+  routes.patch("/:id", updateAddressInputsMiddleware, updateAddressController);
   return routes;
 };

@@ -5,7 +5,7 @@ import { User } from "./entities/user.entitie";
 import { Addresses } from "./entities/addresses.entitie";
 import { Ads } from "./entities/ads.entitie";
 import { Images } from "./entities/images.entities";
-import { dev1676636910872 } from "./migrations/1676636910872-dev";
+import { dev1676776017924 } from "./migrations/1676776017924-dev";
 
 const AppDataSource = new DataSource(
   process.env.NODE_ENV === "test"
@@ -22,10 +22,10 @@ const AppDataSource = new DataSource(
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DB,
-        logging: true,
+        logging: false,
         synchronize: false,
         entities: [User, Ads, Addresses, Images],
-        migrations: [dev1676636910872],
+        migrations: [],
       }
 );
 

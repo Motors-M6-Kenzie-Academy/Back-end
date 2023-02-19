@@ -1,87 +1,30 @@
-// Tipagem User
-export interface IUser {
+import { IAddress } from "../address";
+
+interface IUser {
   id?: string;
   name: string;
   email: string;
   cpf: string;
   phoneNumber: string;
-  password: string;
   birthDate: string;
-  accountType: string;
   description: string;
-  roadName: string;
-  houseNumber: number;
-  complement: string;
-  city: string;
-  zipCode: string;
-  state: string;
-  address?: object;
+  accountType?: string;
+  isActive?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
-  token?: string;
 }
 
-
-// Corrigir 
-// Create User
-export type IUserCreateRequest = Omit<
-  IUser,
-  "id" | "createdAt" | "updatedAt" | "ads" | "token"
->;
-export type IUserCreateResponse = Omit<
-  IUser,
-  | "token"
-  | "ads"
-  | "password"
-  | "roadName"
-  | "houseNumber"
-  | "complement"
-  | "zipCode"
-  | "state"
-  | "city"
->;
-
-// Update User
-export type IUserUpdateRequest = Omit<
-  IUser,
-  | "id"
-  | "password"
-  | "accountType"
-  | "roadName"
-  | "houseNumber"
-  | "complement"
-  | "zipCode"
-  | "state"
-  | "address"
-  | "createdAt"
-  | "updatedAt"
-  | "city"
->;
-
-// Update User Address
-export type IAddressUpdateRequest = Omit<
-  IUser,
-  | "id"
-  | "password"
-  | "accountType"
-  | "createdAt"
-  | "updatedAt"
-  | "name"
-  | "email"
-  | "cpf"
-  | "phoneNumber"
-  | "birthDate"
-  | "description"
-  | "address"
->;
-
-// SignIn User
-
-export type IUserSignInRequest = {
-  email: string;
+// Modelo de Tipagem para a Função CREATE User
+export interface IUserCreateRequest extends IUser, IAddress {
   password: string;
-};
+}
 
-export type IUserSignInResponse = {
-  token: string;
-};
+export interface IUserCreateResponse {
+  user: IUser;
+  address: IAddress;
+}
+
+// Modelo de Tipagem para a Função UPDATE User
+export interface IUserUpdateRequest extends IUser {}
+
+export interface IUserUpdateResponse extends IUser {}
