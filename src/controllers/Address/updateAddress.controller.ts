@@ -1,11 +1,14 @@
 import { Request, Response } from "express";
-import { updateAddressService } from "../../services/Address/updateAddress.services";
+import { updateAddressService } from "../../services/Address/updateAddress.service";
 
 export const updateAddressController = async (req: Request, res: Response) => {
   try {
     const { houseNumber, complement, roadName, state, zipCode, city } =
       req.body;
-    const token = req.headers.authorization;
+    // Precisa colocar middleware de verificação de token na rota
+    // const { id } = req.user;
+    const { id } = req.params;
+
     const dataResponse = await updateAddressService({
       houseNumber,
       complement,
@@ -13,7 +16,7 @@ export const updateAddressController = async (req: Request, res: Response) => {
       state,
       zipCode,
       city,
-      token,
+      id,
     });
 
     return res.status(200).json(dataResponse);

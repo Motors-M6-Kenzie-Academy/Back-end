@@ -12,22 +12,22 @@ class Addresses {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @Column()
+  @Column({ length: 100 })
   roadName: string;
 
   @Column()
   houseNumber: number;
 
-  @Column()
+  @Column({ length: 100 })
   complement: string;
 
-  @Column()
+  @Column({ length: 9 })
   zipCode: string;
 
-  @Column()
+  @Column({ length: 50 })
   state: string;
 
-  @Column()
+  @Column({ length: 100 })
   city: string;
 
   @Column({
@@ -43,8 +43,8 @@ class Addresses {
   })
   updatedAt: Date;
 
-  @OneToOne(() => User)
-  @JoinColumn()
+  @OneToOne(() => User, (user) => user.id)
+  @JoinColumn({ name: "refUserID" })
   userAddress: User;
 }
 

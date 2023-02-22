@@ -2,7 +2,7 @@ import AppDataSource from "../../data-source";
 import { Ads } from "../../entities/ads.entitie";
 import { AppError } from "../../errors/appError";
 import { IAdsRequest } from "../../interfaces/ads";
-import { IAddressUpdateRequest } from "../../interfaces/users";
+// import { IAddressUpdateRequest } from "../../interfaces/users";
 
 const adsUpdateService = async (
   {

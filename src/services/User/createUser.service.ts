@@ -1,11 +1,11 @@
 import AppDataSource from "../../data-source";
 import { Addresses } from "../../entities/addresses.entitie";
 import { User } from "../../entities/user.entitie";
+import { hash } from "bcrypt";
 import {
   IUserCreateRequest,
   IUserCreateResponse,
 } from "../../interfaces/users";
-import { hash } from "bcrypt";
 
 export const createUserService = async ({
   accountType,
@@ -26,20 +26,20 @@ export const createUserService = async ({
   const UserRepositoy = AppDataSource.getRepository(User);
   const AddressRepository = AppDataSource.getRepository(Addresses);
 
-  // Instância para se criar o usuário no molde da entidade User
+  // Criação de modelo de Usuário baseado na Entidade User
   const newUser = new User();
   newUser.name = name;
   newUser.email = email;
   newUser.password = await hash(password, 10);
   newUser.phoneNumber = phoneNumber;
   newUser.birthDate = birthDate;
-  newUser.accountType = accountType;
+  newUser.accountType = accountType!;
   newUser.description = description;
   newUser.cpf = cpf;
 
   const createNewUser = await UserRepositoy.save(newUser);
 
-  // Instância para se criar o Address no molde da entidade Address
+  // Criação de modelo de Usuário baseado na Entidade Address
   const newUserAddress = new Addresses();
   newUserAddress.roadName = roadName;
   newUserAddress.houseNumber = houseNumber;
@@ -51,10 +51,13 @@ export const createUserService = async ({
 
   const createNewUserAdress = await AddressRepository.save(newUserAddress);
 
-  const { password: passwordRemove, ...user } = createNewUser;
+  const { password: passwordRemove, ...userRest } = createNewUser;
   const { userAddress, ...address } = createNewUserAdress;
 
-  const dataResponse = { ...user, address };
+  const response = {
+    user: userRest,
+    address: address,
+  };
 
-  return dataResponse;
+  return response;
 };

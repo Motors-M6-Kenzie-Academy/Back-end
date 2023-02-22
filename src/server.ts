@@ -7,6 +7,6 @@ import AppDataSource from "./data-source";
   });
 
   app.listen(3000, () => {
-    console.log("Database connected on PORT 3000");
+    console.log("Server connected on http://localhost:3000");
   });
 })();

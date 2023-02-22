@@ -10,13 +10,14 @@ import {
 } from "typeorm";
 import { Ads } from "./ads.entitie";
 import { Addresses } from "./addresses.entitie";
+import { Exclude } from "class-transformer";
 
 @Entity("users")
 class User {
   @PrimaryGeneratedColumn("uuid")
   readonly id: string;
 
-  @Column()
+  @Column({ length: 100 })
   name: string;
 
   @Column({ unique: true })
@@ -25,20 +26,21 @@ class User {
   @Column({ unique: true })
   cpf: string;
 
-  @Column()
+  @Column({ length: 100 })
+  @Exclude()
   password: string;
 
-  @Column()
+  @Column({ length: 17 })
   phoneNumber: string;
 
-  @Column()
+  @Column({ length: 17 })
   birthDate: string;
 
-  @Column()
+  @Column({ length: 250 })
   description: string;
 
-  @Column()
-  accountType: string;
+  @Column({ length: 10 })
+  accountType: "announcer" | "buyer";
 
   @Column({ default: true })
   isActive: boolean;
@@ -55,8 +57,7 @@ class User {
   })
   updatedAt: Date;
 
-  @OneToOne(() => Addresses, { nullable: true })
-  @JoinColumn()
+  @OneToOne(() => Addresses)
   address: Addresses;
 
   @OneToMany(() => Ads, (ads) => ads.user.id)

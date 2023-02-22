@@ -1,10 +1,10 @@
 import { Router } from "express";
 import SignInController from "../controllers/SignIn/signin.controller";
-import { SignInUserMiddleware } from "../middlewares/signin/signinUser.Middleware";
+import { signinUserInputsMiddleware } from "../middlewares/signin/signinUserInputsMiddleware";
 
 const routes = Router();
 
 export const signinRoutes = () => {
-  routes.post("/", SignInUserMiddleware, SignInController);
+  routes.post("/", signinUserInputsMiddleware, SignInController);
   return routes;
 };
