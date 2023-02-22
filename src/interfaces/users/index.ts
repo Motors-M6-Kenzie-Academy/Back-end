@@ -8,7 +8,7 @@ interface IUser {
   phoneNumber: string;
   birthDate: string;
   description: string;
-  accountType?: string;
+
   isActive?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
@@ -17,6 +17,7 @@ interface IUser {
 // Modelo de Tipagem para a Função CREATE User
 export interface IUserCreateRequest extends IUser, IAddress {
   password: string;
+  accountType: "announcer" | "buyer";
 }
 
 export interface IUserCreateResponse {

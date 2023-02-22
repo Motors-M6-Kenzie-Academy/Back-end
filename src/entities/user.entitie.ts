@@ -10,6 +10,7 @@ import {
 } from "typeorm";
 import { Ads } from "./ads.entitie";
 import { Addresses } from "./addresses.entitie";
+import { Exclude } from "class-transformer";
 
 @Entity("users")
 class User {
@@ -26,6 +27,7 @@ class User {
   cpf: string;
 
   @Column({ length: 100 })
+  @Exclude()
   password: string;
 
   @Column({ length: 17 })
@@ -38,7 +40,7 @@ class User {
   description: string;
 
   @Column({ length: 10 })
-  accountType: string;
+  accountType: "announcer" | "buyer";
 
   @Column({ default: true })
   isActive: boolean;

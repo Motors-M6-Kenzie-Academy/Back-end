@@ -15,7 +15,7 @@ export const updateUserInputsMiddleware = async (
   const { birthDate, cpf, phoneNumber } = req.body;
 
   // --- ID do Usuário recebido por parâmetro da URL e Validação para evitar campo NULO.
-  const { id } = req.params;
+  const { id } = req.user;
 
   if (!id) throw new AppError("User ID empty", 400);
 
