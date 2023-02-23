@@ -6,6 +6,7 @@ import { IAdsRequest } from "../../interfaces/ads";
 
 const adsUpdateService = async (
   {
+    title,
     description,
     cover,
     gallery_image,
@@ -26,6 +27,7 @@ const adsUpdateService = async (
   if (!findAds) throw new AppError("ads not found");
 
   await adsRepository.update(adsId, {
+    title: title || findAds.title,
     description: description || findAds.description,
     cover: cover || findAds.cover,
     gallery_image: gallery_image || findAds.gallery_image,

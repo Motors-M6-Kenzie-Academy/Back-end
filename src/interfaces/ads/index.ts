@@ -1,4 +1,5 @@
 export interface IAdsRequest {
+  title: string;
   description: string;
   typeVehicle: "motorbike" | "car";
   typeAds?: "sell" | "bid";
