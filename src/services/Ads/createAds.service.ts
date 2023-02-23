@@ -4,6 +4,7 @@ import { User } from "../../entities/user.entitie";
 import { IAdsRequest } from "../../interfaces/ads";
 
 const adsCreateService = async ({
+  title,
   description,
   cover,
   gallery_image,
@@ -18,6 +19,7 @@ const adsCreateService = async ({
   // const seller = await userRepository.findOneBy({ id: userId });
 
   const newAds = {
+    title,
     description,
     cover,
     gallery_image,

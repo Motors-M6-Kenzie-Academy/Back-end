@@ -15,6 +15,9 @@ class Ads {
   readonly id: string;
 
   @Column({ length: 120, nullable: false })
+  title: string;
+
+  @Column({ length: 120, nullable: false })
   description: string;
 
   @Column({ length: 10, nullable: false })
