@@ -324,6 +324,6 @@ Porém por padrão o typeAds vem como "sell".
 
 *É possível fazer uma atualização tanto parcial, quanto total.
 
-<h2 align ='center'> Deletar task </h2>
+<h2 align ='center'> Deletar ad </h2>
 
-`DELETE /ads/id (id da task a ser deletada) - Não é necessário passar corpo na requisição!`
+`DELETE /ads/id (id da ad a ser deletada) - Não é necessário passar corpo na requisição!`
