@@ -40,7 +40,7 @@ class User {
   description: string;
 
   @Column({ length: 10 })
-  accountType: "announcer" | "buyer";
+  accountType: "Anunciante" | "Comprador";
 
   @Column({ default: true })
   isActive: boolean;
