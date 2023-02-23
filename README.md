@@ -3,7 +3,7 @@ Motors shop - API
 </h1>
 
 <p>
-Esta é a API do e-commerce Motors shop, pensado em conectar o usuário que quer vender o seu carro ou a sua moto ao usuário que deseja adquirir.
+Esta é a API do e-commerce Motors shop, pensada em conectar o usuário que quer vender o seu carro ou a sua moto ao usuário que deseja adquirir.
 É possível realizar o cadastro, leitura e atualização de usuários, o CRUD dos anúncios e fazer o login.
 </p>
 
