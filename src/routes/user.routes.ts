@@ -5,11 +5,13 @@ import { updateUserController } from "../controllers/User/updateUser.controller"
 import { updateUserInputsMiddleware } from "../middlewares/user/updateUserInputsMiddleware";
 import checkTokenMiddleware from "../middlewares/token/checkTokenMiddleware";
 import userListController from "../controllers/User/listUser.controller";
-import userListIdController from "../controllers/User/listUserId.services";
+import userListIdController from "../controllers/User/listUserId.controller";
+import userSellersListController from "../controllers/User/listUsersSellers.controller";
 
 const routes = Router();
 
 export const userRoutes = () => {
+  routes.get("/announcers", userSellersListController);
   routes.post("/", createUserInputsMiddleware, createUserController);
   routes.patch(
     "/:id",

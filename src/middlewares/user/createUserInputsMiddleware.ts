@@ -43,7 +43,7 @@ export const createUserInputsMiddleware = async (
     accountType.toLowerCase() !== "anunciante"
   )
     throw new AppError(
-      "Account type not iquals to Comprador or Anunciante",
+      "Account type not equals to Comprador or Anunciante",
       400
     );
 

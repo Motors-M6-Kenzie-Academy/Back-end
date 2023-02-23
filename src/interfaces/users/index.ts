@@ -17,7 +17,7 @@ interface IUser {
 // Modelo de Tipagem para a Função CREATE User
 export interface IUserCreateRequest extends IUser, IAddress {
   password: string;
-  accountType: "announcer" | "buyer";
+  accountType: "Anunciante" | "Comprador";
 }
 
 export interface IUserCreateResponse {
