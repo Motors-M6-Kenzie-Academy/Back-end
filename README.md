@@ -172,6 +172,33 @@ Com esta resposta, temos uma informação importante, token, sendo que pode ser 
 ]
 ```
 
+<h4 align ='center'> Atualizar user </h4
+
+`PATCH /user/id - (id do user a ser editado) FORMATO DA REQUISIÇÃO`
+
+```json
+{
+	"name": "Editado"
+}
+```
+
+`PATCH /user/id - FORMATO DA RESPOSTA - STATUS 200`
+
+```json
+{
+	"id": "c7ad4563-e503-45c7-8c18-cd775cf08fea",
+	"name": "Editado",
+	"email": "usuario@gmail.com",
+	"phoneNumber": "+55(11)91234-1234",
+	"isActive": true,
+	"isAdmin": false,
+	"createdAt": "2023-02-12T21:11:03.687Z",
+	"updatedAt": "2023-02-12T22:04:41.766Z"
+}
+```
+
+*É possível fazer uma atualização tanto parcial, quanto total.
+
 <h3 align = "center" id="ads">Ads</h3>
 <h4 align ='center'> Criar ads </h4>
 
@@ -297,34 +324,6 @@ Porém por padrão o typeAds vem como "sell".
 	"createdAt": "2023-02-23T13:35:30.357Z",
 	"updatedAt": "2023-02-23T13:36:42.024Z",
 	"user": null
-}
-```
-
-*É possível fazer uma atualização tanto parcial, quanto total.
-
-
-<h4 align ='center'> Atualizar user </h4
-
-`PATCH /user/id - (id do user a ser editado) FORMATO DA REQUISIÇÃO`
-
-```json
-{
-	"name": "Editado"
-}
-```
-
-`PATCH /user/id - FORMATO DA RESPOSTA - STATUS 200`
-
-```json
-{
-	"id": "c7ad4563-e503-45c7-8c18-cd775cf08fea",
-	"name": "Editado",
-	"email": "usuario@gmail.com",
-	"phoneNumber": "+55(11)91234-1234",
-	"isActive": true,
-	"isAdmin": false,
-	"createdAt": "2023-02-12T21:11:03.687Z",
-	"updatedAt": "2023-02-12T22:04:41.766Z"
 }
 ```
 
