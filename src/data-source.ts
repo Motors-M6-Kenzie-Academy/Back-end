@@ -4,8 +4,8 @@ import { DataSource } from "typeorm";
 import { User } from "./entities/user.entitie";
 import { Addresses } from "./entities/addresses.entitie";
 import { Ads } from "./entities/ads.entitie";
-import { RelationImageRemoved1676647598660 } from "./migrations/1676647598660-RelationImageRemoved";
-import { TitleAddedToAds1677158276111 } from "./migrations/1677158276111-TitleAddedToAds";
+import { createTables1677242630764 } from "./migrations/1677242630764-createTables";
+
 
 const AppDataSource = new DataSource(
   process.env.NODE_ENV === "test"
@@ -26,8 +26,7 @@ const AppDataSource = new DataSource(
         synchronize: false,
         entities: [User, Ads, Addresses],
         migrations: [
-          RelationImageRemoved1676647598660,
-          TitleAddedToAds1677158276111,
+          createTables1677242630764
         ],
       }
 );
