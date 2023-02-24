@@ -27,10 +27,6 @@ Para rodar o servidor em sua máquina, basta dar os seguintes comandos:
 <h3>Link deploy</h3>
 <p>A URL base da API é </p>
 
-<h3>Índice</h3>
-*[Rota - Users](#users)
-*[Rota - Ads](#ads)
-
 <h2 align ='center'> Rotas </h2>
 <h3 align = "center" id="users">Users</h3>
 <h4 align = "center">Criação de user</h4>
