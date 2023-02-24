@@ -11,6 +11,7 @@ Esta é a API do e-commerce Motors shop, pensada em conectar o usuário que quer
 Para configurar o servidor, primeiro faça um cópia do arquivo .env.example, preencha com os dados do seu usuário e renomeie para .env
 </p>
 
+<h3>Instruções</h3>
 <p>
 Para rodar o servidor em sua máquina, basta dar os seguintes comandos:
 </p>
@@ -23,10 +24,12 @@ Para rodar o servidor em sua máquina, basta dar os seguintes comandos:
 
 <strong>yarn dev</strong>
 
+<h3>Link deploy</h3>
 <p>A URL base da API é </p>
 
-<h2 align ='center'> Criação de usuário </h2>
-## Cadastro
+<h2 align ='center'> Rotas </h2>
+<h3 align = "center">Users</h3>
+<h4 align = "center">Criação de user</h4>
 
 `POST /user - FORMATO DA REQUISIÇÃO`
 
@@ -82,7 +85,7 @@ Caso o cadastro seja realizado de forma correta, a resposta será assim:
 }
 ```
 
-<h2 align = "center"> Login </h2>
+<h4 align = "center"> Login </h4>
 
 `POST /signin - FORMATO DA REQUISIÇÃO`
 
@@ -105,7 +108,72 @@ Caso dê tudo certo, a resposta será assim:
 
 Com esta resposta, temos uma informação importante, token, sendo que pode ser guardado no localStorage para fazer a gestão do usuário no Frontend.
 
-<h2 align ='center'> Criar ads </h2>
+<h4 align ='center'> Listar users </h4>
+
+`GET /user - FORMATO DA RESPOSTA - STATUS 200`
+
+```json
+[
+	{
+		"id": "a0a835a4-f077-4002-9fee-1d633b505fb0",
+		"name": "Natalia",
+		"email": "usuario@gmail.com",
+		"cpf": "000.000.000-00",
+		"phoneNumber": "+55(11)91234-1234",
+		"birthDate": "07/04/1997",
+		"description": "texto de descrição",
+		"accountType": "Anunciante",
+		"isActive": true,
+		"createdAt": "2023-02-23T18:50:20.386Z",
+		"updatedAt": "2023-02-23T18:50:20.386Z"
+	}
+]
+```
+
+<h4 align ='center'> Listar user por id</h4>
+
+`GET /user/id (id do user a ser listado) - FORMATO DA RESPOSTA - STATUS 200`
+
+```json
+{
+	"id": "a0a835a4-f077-4002-9fee-1d633b505fb0",
+	"name": "Natalia",
+	"email": "usuario@gmail.com",
+	"cpf": "000.000.000-00",
+	"phoneNumber": "+55(11)91234-1234",
+	"birthDate": "07/04/1997",
+	"description": "texto de descrição",
+	"accountType": "Anunciante",
+	"isActive": true,
+	"createdAt": "2023-02-23T18:50:20.386Z",
+	"updatedAt": "2023-02-23T18:50:20.386Z"
+}
+```
+
+<h4 align ='center'> Listar users que são anunciantes</h4>
+
+`GET /users/announcers - FORMATO DA RESPOSTA - STATUS 200`
+
+```json
+[
+	{
+		"id": "a0a835a4-f077-4002-9fee-1d633b505fb0",
+		"name": "Natalia",
+		"email": "usuario@gmail.com",
+		"cpf": "000.000.000-00",
+		"phoneNumber": "+55(11)91234-1234",
+		"birthDate": "07/04/1997",
+		"description": "texto de descrição",
+		"accountType": "Anunciante",
+		"isActive": true,
+		"createdAt": "2023-02-23T18:50:20.386Z",
+		"updatedAt": "2023-02-23T18:50:20.386Z"
+	}
+]
+```
+
+<h3 align = "center">Ads</h3>
+<h4 align ='center'> Criar ads </h4>
 
 `POST /ads - FORMATO DA REQUISIÇÃO`
 
@@ -153,7 +221,7 @@ Com esta resposta, temos uma informação importante, token, sendo que pode ser 
 
 Porém por padrão o typeAds vem como "sell".
 
-<h2 align ='center'> Listar ads </h2>
+<h4 align ='center'> Listar ads </h4>
 
 `GET /ads - FORMATO DA RESPOSTA - STATUS 200`
 
@@ -177,7 +245,7 @@ Porém por padrão o typeAds vem como "sell".
 ]
 ```
 
-<h2 align ='center'> Listar ad por id</h2>
+<h4 align ='center'> Listar ad por id</h4>
 
 `GET /ads/id (id do ad a ser listado) - FORMATO DA RESPOSTA - STATUS 200`
 
@@ -200,71 +268,9 @@ Porém por padrão o typeAds vem como "sell".
 ```
 
 
-<h2 align ='center'> Listar users </h2>
 
-`GET /user - FORMATO DA RESPOSTA - STATUS 200`
 
-```json
-[
-	{
-		"id": "a0a835a4-f077-4002-9fee-1d633b505fb0",
-		"name": "Natalia",
-		"email": "usuario@gmail.com",
-		"cpf": "000.000.000-00",
-		"phoneNumber": "+55(11)91234-1234",
-		"birthDate": "07/04/1997",
-		"description": "texto de descrição",
-		"accountType": "Anunciante",
-		"isActive": true,
-		"createdAt": "2023-02-23T18:50:20.386Z",
-		"updatedAt": "2023-02-23T18:50:20.386Z"
-	}
-]
-```
-
-<h2 align ='center'> Listar user por id</h2>
-
-`GET /user/id (id do user a ser listado) - FORMATO DA RESPOSTA - STATUS 200`
-
-```json
-{
-	"id": "a0a835a4-f077-4002-9fee-1d633b505fb0",
-	"name": "Natalia",
-	"email": "usuario@gmail.com",
-	"cpf": "000.000.000-00",
-	"phoneNumber": "+55(11)91234-1234",
-	"birthDate": "07/04/1997",
-	"description": "texto de descrição",
-	"accountType": "Anunciante",
-	"isActive": true,
-	"createdAt": "2023-02-23T18:50:20.386Z",
-	"updatedAt": "2023-02-23T18:50:20.386Z"
-}
-```
-
-<h2 align ='center'> Listar users que são anunciantes</h2>
-
-`GET /users/announcers - FORMATO DA RESPOSTA - STATUS 200`
-
-```json
-[
-	{
-		"id": "a0a835a4-f077-4002-9fee-1d633b505fb0",
-		"name": "Natalia",
-		"email": "usuario@gmail.com",
-		"cpf": "000.000.000-00",
-		"phoneNumber": "+55(11)91234-1234",
-		"birthDate": "07/04/1997",
-		"description": "texto de descrição",
-		"accountType": "Anunciante",
-		"isActive": true,
-		"createdAt": "2023-02-23T18:50:20.386Z",
-		"updatedAt": "2023-02-23T18:50:20.386Z"
-	}
-]
-```
-
-<h2 align ='center'> Atualizar ad </h2>
+<h4 align ='center'> Atualizar ad </h4>
 
 `PATCH /ads/id (id da ad a ser editada) - FORMATO DA REQUISIÇÃO`
 
@@ -297,7 +303,7 @@ Porém por padrão o typeAds vem como "sell".
 *É possível fazer uma atualização tanto parcial, quanto total.
 
 
-<h2 align ='center'> Atualizar user </h2>
+<h4 align ='center'> Atualizar user </h4
 
 `PATCH /user/id - (id do user a ser editado) FORMATO DA REQUISIÇÃO`
 
@@ -324,6 +330,6 @@ Porém por padrão o typeAds vem como "sell".
 
 *É possível fazer uma atualização tanto parcial, quanto total.
 
-<h2 align ='center'> Deletar ad </h2>
+<h4 align ='center'> Deletar ad </h4>
 
 `DELETE /ads/id (id da ad a ser deletada) - Não é necessário passar corpo na requisição!`
