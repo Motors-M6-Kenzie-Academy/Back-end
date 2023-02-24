@@ -32,20 +32,20 @@ Para rodar o servidor em sua máquina, basta dar os seguintes comandos:
 
 ```json
 {
-	"name": "Natalia",
+  "name": "Natalia",
   "email": "usuario@gmail.com",
   "phoneNumber": "+55(11)91234-1234",
-	"cpf": "000.000.000-00",
+  "cpf": "000.000.000-00",
   "password": "Usuario1*",
   "birthDate": "07/04/1997",
   "accountType": "Anunciante",
   "roadName": "Rua tal tal",
   "houseNumber": 301,
-	"city": "São Paulo",
+  "city": "São Paulo",
   "complement": "complemento tal",
   "zipCode": "60873-905",
   "state": "SP",
-	"description": "texto de descrição"
+  "description": "texto de descrição"
 }
 ```
 
