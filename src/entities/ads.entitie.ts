@@ -23,6 +23,9 @@ class Ads {
   @Column({ length: 10, nullable: false })
   typeVehicle: "motorbike" | "car";
 
+  @Column({ default: true })
+  isPublished: boolean;
+
   @Column({ default: "sell" })
   typeAds: "sell" | "bid";
 

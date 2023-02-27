@@ -15,6 +15,7 @@ const adsUpdateService = async (
     releaseYear,
     typeVehicle,
     typeAds,
+    isPublished,
   }: IAdsRequest,
   adsId: string
 ) => {
@@ -34,8 +35,9 @@ const adsUpdateService = async (
     mileage: mileage || findAds.mileage,
     price: price || findAds.price,
     releaseYear: releaseYear || findAds.releaseYear,
-    typeAds: typeAds || findAds.typeAds,
-    typeVehicle: typeVehicle || typeVehicle,
+    typeAds: typeAds,
+    typeVehicle: typeVehicle || findAds.typeVehicle,
+    isPublished: isPublished,
   });
 
   const ad = await adsRepository.findOneBy({ id: adsId });

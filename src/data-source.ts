@@ -5,7 +5,7 @@ import { User } from "./entities/user.entitie";
 import { Addresses } from "./entities/addresses.entitie";
 import { Ads } from "./entities/ads.entitie";
 import { createTables1677242630764 } from "./migrations/1677242630764-createTables";
-
+import { IsPublishedAddedToAds1677503246236 } from "./migrations/1677503246236-IsPublishedAddedToAds";
 
 const AppDataSource = new DataSource(
   process.env.NODE_ENV === "test"
@@ -26,7 +26,8 @@ const AppDataSource = new DataSource(
         synchronize: false,
         entities: [User, Ads, Addresses],
         migrations: [
-          createTables1677242630764
+          createTables1677242630764,
+          IsPublishedAddedToAds1677503246236,
         ],
       }
 );
