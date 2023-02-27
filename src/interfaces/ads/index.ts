@@ -8,6 +8,7 @@ export interface IAdsRequest {
   price: string;
   cover: string;
   gallery_image: string;
+  isPublished?: boolean;
 }
 
 export interface IAds extends IAdsRequest {
