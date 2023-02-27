@@ -60,12 +60,11 @@ class User {
   @OneToOne(() => Addresses)
   address: Addresses;
 
-  @OneToMany(() => Ads, (ads) => ads.user, { eager: true })
+  @OneToMany(() => Ads, (ads) => ads.user)
   ads: Ads[];
 
   @OneToMany(() => Comment, (comments) => comments.user, {
     cascade: true,
-    eager: true,
   })
   comments: Comment[];
 }
