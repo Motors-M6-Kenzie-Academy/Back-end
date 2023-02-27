@@ -2,6 +2,7 @@ import AppDataSource from "../../data-source";
 import { Ads } from "../../entities/ads.entitie";
 import { User } from "../../entities/user.entitie";
 import { AppError } from "../../errors/appError";
+
 const adsDeleteService = async (id: string, userId: string) => {
   const adsRepository = AppDataSource.getRepository(Ads);
   const userRepository = AppDataSource.getRepository(User);
