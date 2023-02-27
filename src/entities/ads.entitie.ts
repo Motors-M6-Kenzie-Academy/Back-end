@@ -56,7 +56,6 @@ class Ads {
 
   @OneToMany(() => Comment, (comments) => comments.ad, {
     cascade: true,
-    eager: true,
   })
   comments: Comment[];
 }

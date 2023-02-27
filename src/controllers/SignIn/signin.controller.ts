@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { SignInService } from "../../services/SignIn/signin.service";
+
 export default async function SignInController(req: Request, res: Response) {
   try {
     const { email, password } = req.body;

@@ -20,11 +20,13 @@ class Comment {
   createdAt: Date;
 
   @ManyToOne(() => User, (user) => user.comments, {
+    eager: true,
     onDelete: "CASCADE",
   })
   user: User;
 
   @ManyToOne(() => Ads, (ads) => ads.comments, {
+    eager: true,
     onDelete: "CASCADE",
   })
   ad: Ads;

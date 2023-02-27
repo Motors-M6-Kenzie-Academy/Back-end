@@ -14,9 +14,14 @@ export const SignInService = async ({
 
   // --- Criação de Token utilizando os dados do usuário e baseando a encriptação na chave secreta
 
-  const token = sign({ user }, String(process.env.JWT_SECRET), {
-    expiresIn: "1d",
-  });
+  const token = sign(
+    { accountType: user!.accountType },
+    String(process.env.SECRET_KEY),
+    {
+      subject: user!.id,
+      expiresIn: "30days",
+    }
+  );
 
   return { token };
 };

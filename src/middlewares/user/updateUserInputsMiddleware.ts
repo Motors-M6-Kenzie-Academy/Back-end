@@ -33,19 +33,19 @@ export const updateUserInputsMiddleware = async (
 
   if (!isBirthdateValid)
     throw new AppError(
-      "Wrong format for bithdate, need be igual to DD/MM/YYYY",
+      "Wrong format for birthDate, need to be equal to DD/MM/YYYY",
       404
     );
 
   if (!isCPFValid)
     throw new AppError(
-      "Wrong format for CPF, need be igual to XXX.XXX.XXX-XX",
+      "Wrong format for cpf, need to be equal to XXX.XXX.XXX-XX",
       404
     );
 
   if (!isPhoneNumberValid)
     throw new AppError(
-      "Wrong format for phoneNumber, need be igual to +55(99)99999-9999 or +55(99)9999-9999",
+      "Wrong format for phoneNumber, need to be equal to +55(99)99999-9999 or +55(99)9999-9999",
       404
     );
 

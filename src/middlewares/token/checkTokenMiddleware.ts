@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import jwt, { decode, verify } from "jsonwebtoken";
+import { decode, verify } from "jsonwebtoken";
 import "dotenv/config";
 import { IUserUpdateResponse } from "../../interfaces/users";
 import { AppError } from "../../errors/appError";
@@ -13,23 +13,26 @@ const checkTokenMiddleware = async (
 
   if (!token) {
     return res.status(401).json({
-      message: "Invalid token",
+      message: "Missing token",
     });
   }
 
   token = token.split(" ")[1];
 
-  verify(token, process.env.JWT_SECRET as string, (error, decoded: any) => {
-    if (error) {
-      throw new AppError("Invalid Token", 401);
+  verify(
+    token as string,
+    process.env.SECRET_KEY as string,
+    (error, decoded: any) => {
+      if (error) {
+        throw new AppError("Invalid Token", 401);
+      }
+      req.user = {
+        accountType: decoded.accountType,
+        id: decoded.sub,
+      };
+      next();
     }
-    req.user = {
-      accountType: decoded["user"]["accountType"],
-      id: decoded["user"]["id"],
-    };
-  });
-
-  next();
+  );
 };
 
 export default checkTokenMiddleware;
