@@ -6,11 +6,11 @@ import {
   UpdateDateColumn,
   OneToOne,
   OneToMany,
-  JoinColumn,
 } from "typeorm";
 import { Ads } from "./ads.entitie";
 import { Addresses } from "./addresses.entitie";
 import { Exclude } from "class-transformer";
+import { Comment } from "./comments.entity";
 
 @Entity("users")
 class User {
@@ -60,8 +60,14 @@ class User {
   @OneToOne(() => Addresses)
   address: Addresses;
 
-  @OneToMany(() => Ads, (ads) => ads.user.id)
+  @OneToMany(() => Ads, (ads) => ads.user, { eager: true })
   ads: Ads[];
+
+  @OneToMany(() => Comment, (comments) => comments.user, {
+    cascade: true,
+    eager: true,
+  })
+  comments: Comment[];
 }
 
 export { User };

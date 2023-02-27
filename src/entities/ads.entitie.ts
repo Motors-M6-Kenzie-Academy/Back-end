@@ -7,6 +7,7 @@ import {
   OneToMany,
   ManyToOne,
 } from "typeorm";
+import { Comment } from "./comments.entity";
 import { User } from "./user.entitie";
 
 @Entity("ads")
@@ -50,8 +51,14 @@ class Ads {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @ManyToOne(() => User, { eager: true })
+  @ManyToOne(() => User, (user) => user.ads)
   user: User;
+
+  @OneToMany(() => Comment, (comments) => comments.ad, {
+    cascade: true,
+    eager: true,
+  })
+  comments: Comment[];
 }
 
 export { Ads };

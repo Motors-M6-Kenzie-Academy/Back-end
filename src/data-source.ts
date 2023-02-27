@@ -4,8 +4,8 @@ import { DataSource } from "typeorm";
 import { User } from "./entities/user.entitie";
 import { Addresses } from "./entities/addresses.entitie";
 import { Ads } from "./entities/ads.entitie";
-import { createTables1677242630764 } from "./migrations/1677242630764-createTables";
-import { IsPublishedAddedToAds1677503246236 } from "./migrations/1677503246236-IsPublishedAddedToAds";
+import { Comment } from "./entities/comments.entity";
+import { CreateTables1677507649249 } from "./migrations/1677507649249-CreateTables";
 
 const AppDataSource = new DataSource(
   process.env.NODE_ENV === "test"
@@ -24,11 +24,8 @@ const AppDataSource = new DataSource(
         database: process.env.POSTGRES_DB,
         logging: false,
         synchronize: false,
-        entities: [User, Ads, Addresses],
-        migrations: [
-          createTables1677242630764,
-          IsPublishedAddedToAds1677503246236,
-        ],
+        entities: [User, Ads, Addresses, Comment],
+        migrations: [CreateTables1677507649249],
       }
 );
 
