@@ -19,6 +19,7 @@ export const createUserController = async (req: Request, res: Response) => {
       state,
       zipCode,
     } = req.body;
+    console.log(req.body);
     const dataResponse = await createUserService({
       accountType,
       birthDate,
