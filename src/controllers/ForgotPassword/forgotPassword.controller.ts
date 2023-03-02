@@ -4,6 +4,7 @@ import { ForgotPasswordService } from "../../services/ForgotPassword/forgetPassw
 export const ForgotPasswordController = async (req: Request, res: Response) => {
   try {
     const { email, resetCode } = req.body;
+    console.log(email, resetCode);
 
     const dataResponse = await ForgotPasswordService({ email, resetCode });
 
