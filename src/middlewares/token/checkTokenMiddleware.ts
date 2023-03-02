@@ -17,8 +17,6 @@ const checkTokenMiddleware = async (
     });
   }
 
-  token = token.split(" ")[1];
-
   verify(
     token as string,
     process.env.SECRET_KEY as string,
