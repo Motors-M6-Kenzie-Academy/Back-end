@@ -7,6 +7,8 @@ import checkTokenMiddleware from "../middlewares/token/checkTokenMiddleware";
 import userListController from "../controllers/User/listUser.controller";
 import userListIdController from "../controllers/User/listUserId.controller";
 import userSellersListController from "../controllers/User/listUsersSellers.controller";
+import { deleteUserController } from "../controllers/User/deleteUser.controller";
+import { ForgotPasswordController } from "../controllers/ForgotPassword/forgotPassword.controller";
 
 const routes = Router();
 
@@ -21,6 +23,8 @@ export const userRoutes = () => {
   );
   routes.get("/", userListController);
   routes.get("/:id", userListIdController);
+  routes.delete("/:id", checkTokenMiddleware, deleteUserController);
+  routes.post("/reset", ForgotPasswordController);
 
   return routes;
 };
