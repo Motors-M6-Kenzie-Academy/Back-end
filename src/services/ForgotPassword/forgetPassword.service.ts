@@ -66,6 +66,11 @@ export const UpdatedNewPassService = async (
   isUser.password = await hash(newPass, 10);
   isUser.updatedAt = new Date();
 
+  await AppDataSource.getRepository(User).update(
+    { email: email },
+    { ...isUser }
+  );
+
   const userUpdated = await verifyEmailService(email);
   return userUpdated;
 };
