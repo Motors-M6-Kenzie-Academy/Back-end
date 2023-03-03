@@ -1,5 +1,5 @@
 export const validateCPF = (cpf: string) => {
-  const regex = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/.test(cpf);
+  const regex = /^([0-9]{3})\.([0-9]{3})\.([0-9]{3})-([0-9]{2})$/.test(cpf);
 
   if (!regex) {
     return false;
