@@ -12,7 +12,6 @@ export const updateAddressInputsMiddleware = async (
 ) => {
   const { zipCode } = req.body;
   // Precisa colocar middleware de verificação de token na rota
-  // const { id } = req.user;
   const { id } = req.params;
 
   // --- Verificação para identificar se usuário existe.

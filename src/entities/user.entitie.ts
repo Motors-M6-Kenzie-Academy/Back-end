@@ -30,6 +30,10 @@ class User {
   @Exclude()
   password: string;
 
+  @Column({ length: 8, default: "xxxxxxxx" })
+  @Exclude()
+  resetCode: string;
+
   @Column({ length: 17 })
   phoneNumber: string;
 
