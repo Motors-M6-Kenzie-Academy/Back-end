@@ -4,7 +4,9 @@ import { Ads } from "../../entities/ads.entitie";
 const adsGetService = async () => {
   const adsRepository = AppDataSource.getRepository(Ads);
 
-  const ads = await adsRepository.find({ relations: { user: true } });
+  const ads = await adsRepository.find({
+    relations: { user: true, comments: true },
+  });
 
   return ads;
 };
