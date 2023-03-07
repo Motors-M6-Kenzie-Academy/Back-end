@@ -203,6 +203,36 @@ Com esta resposta, temos uma informação importante, token, sendo que pode ser 
 
 `DELETE /user/id - (id do user a ser deletado) - Não é necessário passar corpo na requisição!``
 
+<h3 align = "center" id="address">Address</h3>
+<h4 align = "center">Atualização de address</h4>
+
+`PATCH /address/id - (id do user a ser editado o endereço) FORMATO DA REQUISIÇÃO`
+
+```json
+{
+	"city": "Nova cidade"
+}
+```
+
+`PATCH /address/id - FORMATO DA RESPOSTA - STATUS 200`
+
+```json
+{
+	"id": "14927681-4e9e-4232-9388-21717767ae34",
+	"roadName": "Rua tal",
+	"houseNumber": 301,
+	"complement": "Complemento tal",
+	"zipCode": "60873-905",
+	"state": "SP",
+	"city": "Nova cidade",
+	"createdAt": "2023-02-28T13:13:55.385Z",
+	"updatedAt": "2023-03-07T13:34:22.210Z"
+}
+```
+
+*É possível fazer uma atualização tanto parcial, quanto total.
+
+
 <h3 align = "center" id="ads">Ads</h3>
 <h4 align ='center'> Criar ads </h4>
 
