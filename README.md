@@ -172,7 +172,7 @@ Com esta resposta, temos uma informação importante, token, sendo que pode ser 
 ]
 ```
 
-<h4 align ='center'> Atualizar user </h4
+<h4 align ='center'> Atualizar user </h4>
 
 `PATCH /user/id - (id do user a ser editado) FORMATO DA REQUISIÇÃO`
 
@@ -198,6 +198,10 @@ Com esta resposta, temos uma informação importante, token, sendo que pode ser 
 ```
 
 *É possível fazer uma atualização tanto parcial, quanto total.
+
+<h4 align ='center'> Deletar user </h4>
+
+`DELETE /user/id - (id do user a ser deletado) - Não é necessário passar corpo na requisição!``
 
 <h3 align = "center" id="ads">Ads</h3>
 <h4 align ='center'> Criar ads </h4>
@@ -294,9 +298,6 @@ Porém por padrão o typeAds vem como "sell".
 }
 ```
 
-
-
-
 <h4 align ='center'> Atualizar ad </h4>
 
 `PATCH /ads/id (id da ad a ser editada) - FORMATO DA REQUISIÇÃO`
@@ -332,3 +333,156 @@ Porém por padrão o typeAds vem como "sell".
 <h4 align ='center'> Deletar ad </h4>
 
 `DELETE /ads/id (id da ad a ser deletada) - Não é necessário passar corpo na requisição!`
+
+<h3 align = "center" id="comments">Comments</h3>
+<h4 align ='center'> Criar comment </h4>
+
+`POST /comments/id (id do anúncio que receberá o comentário) - FORMATO DA REQUISIÇÃO`
+
+```json
+{
+	"content": "Novo comentário"
+}
+```
+
+`POST /comments/id - FORMATO DA RESPOSTA - STATUS 201`
+
+```json
+{
+	{
+	"content": "Novo comentário",
+	"user": {
+		"id": "da0967e3-c1b2-4bae-956e-30da1030d0d0",
+		"name": "Usuário",
+		"email": "usuario@gmail.com",
+		"cpf": "002.020.000-00",
+		"password": "$2b$10$SPeh1T6AdnUpwcuDtpY1r.9pOBsuxx2F8R/ubo1sooqCs43EcBLHe",
+		"resetCode": "xxxxxxxx",
+		"phoneNumber": "+55(99)99999-9999",
+		"birthDate": "07/04/1997",
+		"description": "texto de descrição",
+		"accountType": "Anunciante",
+		"isActive": true,
+		"createdAt": "2023-02-27T14:29:43.017Z",
+		"updatedAt": "2023-02-27T18:31:01.403Z"
+	},
+	"ad": {
+		"id": "8554a18a-3909-459e-b548-e41bb37b7080",
+		"title": "Novo anúncio2",
+		"description": "Descrição do novo anúncio",
+		"typeVehicle": "car",
+		"isPublished": false,
+		"typeAds": "sell",
+		"releaseYear": "2000",
+		"mileage": "50.000 km",
+		"price": "20.000",
+		"cover": "",
+		"gallery_image": "",
+		"createdAt": "2023-02-27T18:26:26.087Z",
+		"updatedAt": "2023-02-27T18:30:35.259Z"
+	},
+	"id": "f3e3f5e4-26da-4eea-964b-4110a2e9c695",
+	"createdAt": "2023-03-06T13:14:19.440Z"
+	}
+}
+```
+
+
+<h4 align ='center'> Listar comments </h4>
+
+`GET /comments/id (id do anúncio que conterá os comentários) - FORMATO DA RESPOSTA - STATUS 200`
+
+```json
+[
+	{
+		"id": "f3e3f5e4-26da-4eea-964b-4110a2e9c695",
+		"content": "Novo comentário",
+		"createdAt": "2023-03-06T13:14:19.440Z",
+		"ad": {
+			"id": "8554a18a-3909-459e-b548-e41bb37b7080",
+			"title": "Novo anúncio2",
+			"description": "Descrição do novo anúncio",
+			"typeVehicle": "car",
+			"isPublished": false,
+			"typeAds": "sell",
+			"releaseYear": "2000",
+			"mileage": "50.000 km",
+			"price": "20.000",
+			"cover": "",
+			"gallery_image": "",
+			"createdAt": "2023-02-27T18:26:26.087Z",
+			"updatedAt": "2023-02-27T18:30:35.259Z"
+		},
+		"user": {
+			"id": "da0967e3-c1b2-4bae-956e-30da1030d0d0",
+			"name": "Usuário",
+			"email": "usuario@gmail.com",
+			"cpf": "002.020.000-00",
+			"password": "$2b$10$SPeh1T6AdnUpwcuDtpY1r.9pOBsuxx2F8R/ubo1sooqCs43EcBLHe",
+			"resetCode": "xxxxxxxx",
+			"phoneNumber": "+55(99)99999-9999",
+			"birthDate": "07/04/1997",
+			"description": "texto de descrição",
+			"accountType": "Anunciante",
+			"isActive": true,
+			"createdAt": "2023-02-27T14:29:43.017Z",
+			"updatedAt": "2023-02-27T18:31:01.403Z"
+		}
+	}
+]
+```
+
+<h4 align ='center'> Atualizar comment </h4>
+
+`PATCH /comments/id (id do comentário a ser editado) - FORMATO DA REQUISIÇÃO`
+
+```json
+{
+	"content": "Novo comentário - Atualizado"
+}
+```
+
+`PATCH /comments/id - FORMATO DA RESPOSTA - STATUS 200`
+
+```json
+{
+	"id": "f3e3f5e4-26da-4eea-964b-4110a2e9c695",
+	"content": "Novo comentário - Atualizado",
+	"createdAt": "2023-03-06T13:14:19.440Z",
+	"user": {
+		"id": "da0967e3-c1b2-4bae-956e-30da1030d0d0",
+		"name": "Usuário",
+		"email": "usuario@gmail.com",
+		"cpf": "002.020.000-00",
+		"password": "$2b$10$SPeh1T6AdnUpwcuDtpY1r.9pOBsuxx2F8R/ubo1sooqCs43EcBLHe",
+		"resetCode": "xxxxxxxx",
+		"phoneNumber": "+55(99)99999-9999",
+		"birthDate": "07/04/1997",
+		"description": "texto de descrição",
+		"accountType": "Anunciante",
+		"isActive": true,
+		"createdAt": "2023-02-27T14:29:43.017Z",
+		"updatedAt": "2023-02-27T18:31:01.403Z"
+	},
+	"ad": {
+		"id": "8554a18a-3909-459e-b548-e41bb37b7080",
+		"title": "Novo anúncio2",
+		"description": "Descrição do novo anúncio",
+		"typeVehicle": "car",
+		"isPublished": false,
+		"typeAds": "sell",
+		"releaseYear": "2000",
+		"mileage": "50.000 km",
+		"price": "20.000",
+		"cover": "",
+		"gallery_image": "",
+		"createdAt": "2023-02-27T18:26:26.087Z",
+		"updatedAt": "2023-02-27T18:30:35.259Z"
+	}
+}
+```
+
+<h4 align ='center'> Deletar comment </h4>
+
+`DELETE /comments/id (id do comentário a ser deletado) - Não é necessário passar corpo na requisição!`
+
